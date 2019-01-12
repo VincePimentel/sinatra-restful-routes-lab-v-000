@@ -4,8 +4,8 @@
 
 <form class="" action="/recipes" method="post">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
-  <p><input type="text" name="name" placeholder="Name" value="<% @recipe.name %>"></p>
-  <p><textarea name="ingredients" rows="8" cols="22" placeholder="Ingredients"></textarea></p>
-  <p><input type="text" name="cook_time" placeholder="Cooking time (minutes)"></p>
+  <p><input type="text" name="name" placeholder="Name" value="<%= @recipe.name %>"></p>
+  <p><textarea name="ingredients" rows="8" cols="22" placeholder="Ingredients"><%= @recipe.ingredientes %></textarea></p>
+  <p><input type="text" name="cook_time" placeholder="Cooking time (minutes)" value="<%= @recipe.name %>"></p>
   <p><input type="submit" id="submit" value="Submit"></p>
 </form>
