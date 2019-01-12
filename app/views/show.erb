@@ -6,9 +6,6 @@
 <h3>Cook Time</h3>
 <p><%= @recipe.cook_time %></p>
 
-<p>
-  <a href="/recipes/<%= @recipe.id %>/edit">EDIT</a> |
-
 <form class="" action="/recipes/<%= @recipe.id %>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <p>
