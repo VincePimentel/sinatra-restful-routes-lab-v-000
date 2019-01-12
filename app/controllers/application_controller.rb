@@ -54,6 +54,20 @@ class ApplicationController < Sinatra::Base
     recipe.save
 
     redirect "/recipes/#{params[:id]}"
+
+    if params.values.include?("")
+      @message = "One or more fields missing. Please try again."
+
+      redirect "/recipes/#{params[:id]}/edit"
+    else
+      recipe = Recipe.create(
+        name: params[:name],
+        ingredients: params[:ingredients],
+        cook_time: params[:cook_time]
+      )
+
+      redirect "/recipes/#{recipe.id}"
+    end
   end
 
   delete "/recipes/:id/delete" do
