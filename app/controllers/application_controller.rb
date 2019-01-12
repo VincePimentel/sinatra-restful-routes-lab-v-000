@@ -47,26 +47,18 @@ class ApplicationController < Sinatra::Base
   end
 
   patch "/recipes/:id" do
-    recipe = Recipe.find(params[:id])
-    recipe.name = params[:name]
-    recipe.ingredients = params[:ingredients]
-    recipe.cook_time = params[:cook_time]
-    recipe.save
-
-    redirect "/recipes/#{params[:id]}"
-
     if params.values.include?("")
       @message = "One or more fields missing. Please try again."
 
       redirect "/recipes/#{params[:id]}/edit"
     else
-      recipe = Recipe.create(
-        name: params[:name],
-        ingredients: params[:ingredients],
-        cook_time: params[:cook_time]
-      )
+      recipe = Recipe.find(params[:id])
+      recipe.name = params[:name]
+      recipe.ingredients = params[:ingredients]
+      recipe.cook_time = params[:cook_time]
+      recipe.save
 
-      redirect "/recipes/#{recipe.id}"
+      redirect "/recipes/#{params[:id]}"
     end
   end
 
