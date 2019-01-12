@@ -48,11 +48,7 @@ class ApplicationController < Sinatra::Base
 
   patch "/recipes/:id" do
     if params.values.include?("")
-      @message = "One or more fields missing. Please try again."
-
-      erb :show
-
-      #redirect "/recipes/#{params[:id]}/edit"
+      redirect "/recipes/#{params[:id]}/edit"
     else
       recipe = Recipe.find(params[:id])
       recipe.name = params[:name]
